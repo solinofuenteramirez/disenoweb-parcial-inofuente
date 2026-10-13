@@ -1,0 +1,507 @@
+/* Reset general de márgenes y variables de color */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-principal: #120907;
+    --bg-secundario: #1e110c;
+    --color-primario: #d9381e;
+    --color-acento: #ffb703;
+    --texto-blanco: #ffffff;
+    --texto-cuerpo: #f7ebe8;
+    --texto-miel: #d4a373;
+    --borde-brillo: rgba(255, 183, 3, 0.3);
+}
+
+body {
+    background-color: var(--bg-principal);
+    color: var(--texto-cuerpo);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+}
+
+/* Estilos del encabezado y menú de navegación */
+.header-principal {
+    background-color: rgba(18, 9, 7, 0.95);
+    border-bottom: 2px solid var(--color-primario);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Alineación del logo de la empresa y texto en el encabezado */
+.logo-enlace {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.logo-header {
+    height: 42px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 6px;
+    transition: transform 0.3s ease;
+}
+
+.logo-header:hover {
+    transform: scale(1.05);
+}
+
+.logo-texto {
+    color: var(--texto-blanco);
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+
+.logo-texto span {
+    color: var(--color-acento);
+}
+
+/* Botón del menú hamburguesa para móviles */
+.btn-hamburguesa {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 0;
+}
+
+.btn-hamburguesa .linea {
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-acento);
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Transformación a icono de cerrar en móvil */
+.btn-hamburguesa.activo .linea:nth-child(1) {
+    transform: translateY(9.5px) rotate(45deg);
+}
+
+.btn-hamburguesa.activo .linea:nth-child(2) {
+    opacity: 0;
+}
+
+.btn-hamburguesa.activo .linea:nth-child(3) {
+    transform: translateY(-9.5px) rotate(-45deg);
+}
+
+.navegacion-principal ul {
+    list-style: none;
+}
+
+.navegacion-principal ul li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.navegacion-principal a {
+    color: var(--texto-blanco);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+.navegacion-principal a:hover {
+    color: var(--color-acento);
+    transform: translateY(-2px);
+}
+
+/* Banner principal con animación de entrada y fondo png */
+.banner-hero {
+    background: linear-gradient(rgba(18, 9, 7, 0.7), rgba(18, 9, 7, 0.8)), 
+                url('../imagenes/banner-pizza.png') center/cover no-repeat;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.banner-contenido {
+    animation: entradaSuave 1.5s ease-out;
+}
+
+.banner-contenido h2 {
+    font-size: 2.8rem;
+    color: var(--texto-blanco);
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.banner-contenido p {
+    font-size: 1.2rem;
+    color: var(--texto-miel);
+    margin-bottom: 1.5rem;
+}
+
+/* Botones principales con efecto hover */
+.btn-animado {
+    display: inline-block;
+    padding: 12px 30px;
+    background: linear-gradient(135deg, var(--color-primario), var(--color-acento));
+    color: var(--texto-blanco);
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(217, 56, 30, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-animado:hover {
+    transform: scale(1.08) translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 183, 3, 0.6);
+    color: #120907;
+}
+
+/* Keyframe para animar el texto del banner */
+@keyframes entradaSuave {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Maquetación del menú usando cajas flotantes */
+.seccion-menu {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 1rem;
+}
+
+.titulo-seccion {
+    text-align: center;
+    font-size: 2.2rem;
+    color: var(--texto-blanco);
+    margin-bottom: 0.5rem;
+}
+
+.subtitulo-seccion {
+    text-align: center;
+    color: var(--texto-miel);
+    margin-bottom: 3rem;
+}
+
+.contenedor-cajas {
+    width: 100%;
+}
+
+.caja-flotante {
+    float: left;
+    width: 48%;
+    margin: 1%;
+    background-color: var(--bg-secundario);
+    border: 1px solid var(--borde-brillo);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.caja-flotante:hover {
+    transform: translateY(-8px);
+    border-color: var(--color-acento);
+    box-shadow: 0 10px 25px rgba(255, 183, 3, 0.3);
+}
+
+.imagen-menu {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.caja-flotante h3 {
+    color: var(--texto-blanco);
+    margin-bottom: 10px;
+}
+
+.caja-flotante p {
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+}
+
+.precio {
+    display: inline-block;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--color-acento);
+}
+
+/* Regla para limpiar los elementos flotantes */
+.clearfix {
+    clear: both;
+}
+
+/* Sección de recursos multimedia */
+.seccion-multimedia {
+    background-color: var(--bg-secundario);
+    padding: 4rem 1rem;
+    border-top: 1px solid var(--borde-brillo);
+    border-bottom: 1px solid var(--borde-brillo);
+}
+
+.contenedor-multimedia {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.bloque-audio {
+    margin-bottom: 3rem;
+}
+
+.bloque-audio h3 {
+    color: var(--texto-blanco);
+    margin-bottom: 10px;
+}
+
+.reproductor-audio {
+    margin-top: 15px;
+    width: 80%;
+    max-width: 450px;
+}
+
+/* Video responsive */
+.responsive-video {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid var(--color-primario);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+.reproductor-video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Sección de métricas */
+.seccion-logros {
+    padding: 3rem 1rem;
+    background-color: var(--bg-principal);
+}
+
+.contenedor-logros {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.numero-logro {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--color-acento);
+}
+
+/* Sección de Ubicación (Mapa Google Maps) */
+.seccion-ubicacion {
+    max-width: 1000px;
+    margin: 4rem auto;
+    padding: 0 1rem;
+}
+
+.contenedor-mapa {
+    background-color: var(--bg-secundario);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--borde-brillo);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+.responsive-iframe {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid var(--color-primario);
+}
+
+.responsive-iframe iframe {
+    display: block;
+    width: 100%;
+}
+
+/* Formulario de contacto */
+.seccion-contacto {
+    max-width: 600px;
+    margin: 4rem auto;
+    padding: 0 1rem;
+}
+
+.formulario-pedido {
+    background-color: var(--bg-secundario);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--borde-brillo);
+}
+
+.grupo-campo {
+    margin-bottom: 1.2rem;
+}
+
+.grupo-campo label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--texto-blanco);
+    font-weight: 600;
+}
+
+.grupo-campo input,
+.grupo-campo select,
+.grupo-campo textarea {
+    width: 100%;
+    padding: 10px;
+    background-color: #140b08;
+    border: 1px solid var(--borde-brillo);
+    border-radius: 6px;
+    color: var(--texto-blanco);
+}
+
+.btn-enviar {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Estilos del pie de página completamente centrado */
+.pie-pagina {
+    background-color: #0a0403;
+    padding: 2.5rem 1rem;
+    text-align: center;
+    border-top: 2px solid var(--color-primario);
+}
+
+.contenido-footer {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Redes sociales en la parte superior del footer */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 1.2rem;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--bg-secundario);
+    color: var(--texto-miel);
+    border: 1px solid var(--borde-brillo);
+    border-radius: 50%;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #120907;
+    background-color: var(--color-acento);
+    border-color: var(--color-acento);
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(255, 183, 3, 0.4);
+}
+
+.creditos-footer {
+    font-size: 0.95rem;
+    color: var(--texto-cuerpo);
+    margin-bottom: 4px;
+}
+
+.autor {
+    font-size: 0.85rem;
+    color: var(--texto-miel);
+    margin-top: 6px;
+}
+
+/* Diseño adaptativo usando Media Queries */
+
+/* Pantallas grandes o escritorio (>= 768px) */
+@media (min-width: 768px) {
+    .caja-flotante {
+        width: 23%;
+        margin: 1%;
+    }
+
+    .banner-contenido h2 {
+        font-size: 3.5rem;
+    }
+}
+
+/* Dispositivos móviles (< 768px) */
+@media (max-width: 767px) {
+    .btn-hamburguesa {
+        display: flex;
+    }
+
+    .navegacion-principal {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(18, 9, 7, 0.98);
+        border-bottom: 2px solid var(--color-primario);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out;
+    }
+
+    .navegacion-principal.activo {
+        max-height: 300px;
+    }
+
+    .navegacion-principal ul {
+        padding: 1rem 0;
+        text-align: center;
+    }
+
+    .navegacion-principal ul li {
+        display: block;
+        margin: 12px 0;
+    }
+
+    .caja-flotante {
+        float: none;
+        width: 100%;
+        margin: 15px 0;
+    }
+
+    .contenedor-logros {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
